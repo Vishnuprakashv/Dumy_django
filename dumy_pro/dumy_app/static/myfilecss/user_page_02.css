@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar-container {
+    height: 6rem;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 0.2rem;
+}
+
+.Home-About-Contact-Container {
+    color: #fff;
+    height: 3rem;
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.profile-image-container {
+    height: 5.5rem;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    height: 60px;
+    width: 60px;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+#logout_anchor,
+#home-anchor,
+#about-anchor,
+#contact-anchor {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    width: 5rem;
+}
+
+.logout-container {
+    height: 1.5rem;
+    width: 6rem;
+    background-color: aqua;
+    border-radius: 0.5rem;
+    border: 1px solid red;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+.popup-menu {
+    display: none;
+    position: absolute;
+    top: 6rem;
+    right: 1rem;
+    background-color: #000;
+    border: 1px solid #fff;
+    border-radius: 0.5rem;
+    width: 10rem;
+    text-align: center;
+    z-index: 1000;
+}
+
+.popup-menu a {
+    display: block;
+    padding: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.popup-menu a:hover {
+    background-color: #333;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar-container {
+        justify-content: space-between;
+    }
+    .Home-About-Contact-Container {
+        display: none;
+    }
+    .hamburger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    .profile-image-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .image-container {
+        height: 50px;
+        width: 50px;
+    }
+    #logout_anchor,
+    #home-anchor,
+    #about-anchor,
+    #contact-anchor,
+    #popup-home-anchor,
+    #popup-about-anchor,
+    #popup-contact-anchor {
+        font-size: 0.9rem;
+        width: auto;
+    }
+}
+
+@media (max-width: 320px) {
+    .navbar-container {
+        padding: 0.5rem;
+    }
+    #logout_anchor,
+    #home-anchor,
+    #about-anchor,
+    #contact-anchor,
+    #popup-home-anchor,
+    #popup-about-anchor,
+    #popup-contact-anchor {
+        font-size: 0.7rem;
+        width: auto;
+    }
+}

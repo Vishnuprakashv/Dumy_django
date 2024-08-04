@@ -1,0 +1,51 @@
+{% extends "myfile/user_page.html" %}
+
+{% block title %}Python Content{% endblock %}
+
+{% block content %}
+    
+    <div class="python_container" style="position: fixed; top: 9rem; left: 0; width: 100%; height: calc(100vh - 9rem); display: flex; flex-direction: row; gap: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; background-color: aqua;">
+        <!-- Part 01 -->
+        <div class="python_container_01" style="height: 100%; width: 22%; background-color: red; overflow-y: auto;">
+            <h1>Analysis Content!</h1>
+            <ul>
+                <li>
+                    <a href="#introduction">Introduction</a>
+                </li>
+                <li>
+                    <a href="#data_types">Data types</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Part 02 -->
+        <div class="python_container_02" style="height: 100%; width: 76%; background-color: blueviolet; display: flex; flex-direction: column; gap: 8rem; color: #fff; overflow-y: auto;">
+            <div id="introduction" style="min-height: 70vh; width: 100%; background-color: black; color: #fff;">
+                <h1>Introduction</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias ab dolorum. Quo corrupti incidunt ullam ad, ea odit expedita, eaque consequatur odio perspiciatis magni repellat adipisci minus voluptates. Ea.
+                Exercitationem at cupiditate possimus commodi placeat numquam totam recusandae ratione beatae deserunt nemo, sunt similique molestias dolorem. Nulla est inventore pariatur assumenda. Sed magnam accusantium explicabo illum laborum nisi doloribus.
+                Dignissimos, provident laudantium ex, a delectus aliquam dolorum ad, eos id doloribus perferendis placeat nisi officiis sunt vero consequuntur voluptatibus laboriosam perspiciatis! Dolorum, eius ducimus nesciunt obcaecati voluptatum deleniti? Dolorem.
+                Dolore porro autem sed explicabo, facere aut praesentium laborum quaerat officiis ipsam quas repudiandae placeat suscipit rerum et sequi ullam blanditiis at provident nulla cum dolores beatae inventore. Corporis, ex!</p>
+            </div>
+            <div id="data_types" style="min-height: 70vh; width: 100%; background-color: blue; color: #fff;">
+                <h1>Data types</h1>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem enim cumque temporibus quibusdam inventore neque numquam iure ullam quam sequi quae quas aut adipisci accusamus illum dignissimos, corporis tempore dolorem!
+                Minus deleniti mollitia sint eius doloribus, tempora repellat sapiente quo aperiam unde, perferendis nostrum accusamus veritatis ratione aliquam ipsa? At ut ducimus rerum inventore aut. Explicabo quasi distinctio laudantium placeat!
+                Quis nam, ipsum, facilis perferendis veritatis labore sint veniam harum cumque, fugiat molestiae iusto incidunt! Reiciendis facilis facere eaque repudiandae odio, possimus voluptatum rem laudantium quis laborum. Esse, culpa dolores?
+                Eos et distinctio animi eum, maiores quos sunt esse ullam, maxime facere quia nostrum saepe recusandae a optio, doloribus accusamus voluptas! Perferendis necessitatibus quod rerum, culpa non ducimus officiis aperiam.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.python_container_01 a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetID = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetID);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+{% endblock %}

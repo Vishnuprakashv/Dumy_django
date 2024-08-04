@@ -1,0 +1,279 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+.forgot-password-page-form-container{
+    display: flex;
+    padding-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    
+}
+.forgot-password-page-container{
+    height: 75vh;
+    width: 100vh;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    gap: 0.5rem;
+    /* padding-right: 1rem; */
+}
+.forgot-password-headline-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.forgot-email-otp-password-container{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    /* align-items: center; */
+    gap: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+}
+/* Email container section */
+.email-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    color: #fff;
+}
+.user-email-label{
+    height: 100%;
+    width: 30%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.user-email-input{
+    height: 100%;
+    width: 50%;
+    background-color: aqua;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+}
+#user_email{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+/* Otp section */
+.enter-otp-container{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    /* background-color: aquamarine; */
+}
+.enter-label-otp-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    color: #fff;
+}
+.enter-otp-label{
+    height: 100%;
+    width: 30%;
+    /* background-color: aqua; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.enter-otp-input{
+    height: 100%;
+    width: 50%;
+    background-color: aqua;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+}
+.enter-verify-resend-btn-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    /* background-color: blue; */
+
+}
+.enter-otp-verify-btn{
+    height: 100%;
+    width: 40%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enter-otp-resend-btn{
+    height: 100%;
+    width: 40%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+#otp{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+}
+/* Password container */
+.new-confirm-password-container{
+    height: 8rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.new-password-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+.new-password-label{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.new-password-input{
+    height: 100%;
+    width: 50%;
+    background-color: aqua;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+}
+#new_password{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+}
+.confirm-password-container{
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+.confirm-password-label{
+    height: 100%;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.confirm-password-input{
+    height: 100%;
+    width: 50%;
+    background-color: aqua;
+    border: 1px solid #bbb;
+    border-radius: 0.5rem;
+}
+#confirm_password{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.5rem;
+    border: none;
+}
+.reset-password-btn-container{
+    height: 2rem;
+    color: #fff;
+    /* background-color: #bbb; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.reset-password-btn-btn{
+    height: 100%;
+    width: 50%;
+    /* background-color: blueviolet; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border: none;
+}
+#reset_password_btn{
+    width: 8rem;
+    height: 100%;
+    border: 1px solid red;
+    border-radius: 0.5rem;
+}
+
+/* Redirect login & main page */
+.login-main-page-redirect-container{
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 14rem;
+    flex-direction: row;
+    align-items: center;
+}
+.login-page-redirect-container{
+    height: 100%;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    border-radius: 0.5rem;
+}
+.main-page-redirect-container{
+    height: 100%;
+    width: 8.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    border-radius: 0.5rem;
+}
+#login-page-anchor{
+    text-decoration: none;
+    color: #fff;
+}
+#main-page-anchor{
+    text-decoration: none;
+    color: #fff;
+}

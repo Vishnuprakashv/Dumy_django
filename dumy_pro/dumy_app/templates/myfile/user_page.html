@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page</title>
+    
+    <script>
+        function toggleMenu() {
+            const popupMenu = document.getElementById('popup-menu');
+            if (popupMenu.style.display === 'block') {
+                popupMenu.style.display = 'none';
+            } else {
+                popupMenu.style.display = 'block';
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            const popupMenu = document.getElementById('popup-menu');
+            const hamburgerIcon = document.querySelector('.hamburger-icon');
+
+            if (!popupMenu.contains(event.target) && !hamburgerIcon.contains(event.target)) {
+                popupMenu.style.display = 'none';
+            }
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar-container {
+            
+            height: 6rem;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            position: relative;
+        }
+
+        .Home-About-Contact-Container {
+            color: #fff;
+            height: 3rem;
+            width: 70%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .profile-image-container {
+            height: 5.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: auto;
+            margin-left: auto;
+        }
+
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-container {
+            height: 60px;
+            width: 60px;
+            background-color: #fff;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        #logout_anchor,
+        #home-anchor,
+        #java-anchor,
+        #python-anchor,
+        #analysis-anchor,
+        #science-anchor {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            width: 5rem;
+        }
+
+        .hamburger-menu {
+            display: none;
+        }
+
+        .hamburger-icon {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .popup-menu {
+            display: none;
+            position: absolute;
+            top: 6rem;
+            left: 1rem; 
+            background-color: #000;
+            border: 1px solid #fff;
+            border-radius: 0.5rem;
+            width: 10rem;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup-menu a {
+            display: block;
+            padding: 1rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .popup-menu a:hover {
+            background-color: #333;
+        }
+        .profile-main-page-container{
+            height: 200vh;
+            width: 100%;
+            background-color: aqua;
+            color: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .navbar-container {
+                justify-content: space-between;
+            }
+            .Home-About-Contact-Container {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+                order: -1;
+            }
+            .popup-menu {
+                left: 1rem; 
+                top: 6rem; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .profile-image-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .image-container {
+                height: 60px;
+                width: 60px;
+            }
+            #logout_anchor,
+            #home-anchor,
+            #about-anchor,
+            #contact-anchor,
+            #popup-home-anchor,
+            #popup-about-anchor,
+            #popup-contact-anchor {
+                font-size: 0.9rem;
+                width: auto;
+            }
+            .popup-menu {
+                left: 0.5rem; 
+                top: 6rem; 
+            }
+        }
+
+        @media (max-width: 320px) {
+            .navbar-container {
+                padding: 0.5rem;
+            }
+            #logout_anchor,
+            #home-anchor,
+            #java-anchor,
+            #python-anchor,
+            #popup-home-anchor,
+            #popup-java-anchor,
+            #popup-python-anchor {
+                font-size: 0.7rem;
+                width: auto;
+            }
+            .popup-menu {
+                left: 0.5rem; 
+                top: 6rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Profile</h1>
+    <!-- Section Header -->
+    <nav class="navbar-container" style="position: fixed;">
+        <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+        </div>
+        <div class="Home-About-Contact-Container">
+            <div class="Home-container"><a id="home-anchor" href="{% url 'dumy_app:users_content' %}">Home</a></div>
+            <div class="java-container"><a id="java-anchor" href="{% url 'dumy_app:java_content' %}">Java</a></div>
+            <div class="python-container"><a id="python-anchor" href="{% url 'dumy_app:python_content' %}">Python</a></div>
+            <div class="analysis-container"><a id="analysis-anchor" href="{% url 'dumy_app:analysis_content' %}">Data Analysis</a></div>
+            <div class="science-container"><a id="science-anchor" href="{% url 'dumy_app:science_content' %}">Data Science</a></div>
+        </div>
+        <div class="profile-image-container">
+            <div class="image-container">
+                <a href="{% url 'dumy_app:user_image' %}">
+                    {% if user_image_data and user_image_data.image %}
+                        <img src="{{ user_image_data.image.url }}" alt="User Image">
+                    {% else %}
+                        {% load static %}
+                        <img src="{% static 'icons/profile_icon.jpg' %}" alt="Default User Image">
+                    {% endif %}
+                </a>
+            </div>
+            <div>
+                <a id="logout_anchor" href="">Log Out</a>
+            </div>
+        </div>
+    </nav>
+    <div id="popup-menu" class="popup-menu">
+        <a id="popup-home-anchor" href="">Home</a>
+        <a id="popup-java-anchor" href="">Java</a>
+        <a id="popup-python-anchor" href="">Python</a>
+    </div>
+    <!-- Section Main -->
+    <div class="profile-main-page-container" style="margin-top: 6rem;  height: 250vh; background-color: aqua; position: fixed;">
+        {% block content %}
+        <!-- Main content will be inserted here -->
+        {% endblock %}
+        <!-- Main content can go here -->
+    </div>
+    <!-- Section Footer -->
+    <div class="profile-footer-page-container">
+        <!-- Footer content can go here -->
+    </div>
+</body>
+</html>

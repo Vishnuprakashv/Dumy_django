@@ -1,0 +1,43 @@
+{% extends "myfile/user_page.html" %}
+
+{% block title %}Python Content{% endblock %}
+
+{% block content %}
+    
+    <div class="python_container" style="position: fixed; top: 9rem; left: 0; width: 100%; height: calc(100vh - 9rem); display: flex; flex-direction: row; gap: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; background-color: aqua;">
+        <!-- Part 01 -->
+        <div class="python_container_01" style="height: 100%; width: 22%; background-color: red; overflow-y: auto;">
+            <h1>Java Content!</h1>
+            <ul>
+                <li>
+                    <a href="#introduction">Introduction</a>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- Part 02 -->
+        <div class="python_container_02" style="height: 100%; width: 76%; background-color: blueviolet; display: flex; flex-direction: column; gap: 8rem; color: #fff; overflow-y: auto;">
+            <div id="introduction" style="min-height: 70vh; width: 100%; background-color: black; color: #fff;">
+                <h1>Introduction</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias ab dolorum. Quo corrupti incidunt ullam ad, ea odit expedita, eaque consequatur odio perspiciatis magni repellat adipisci minus voluptates. Ea.
+                Exercitationem at cupiditate possimus commodi placeat numquam totam recusandae ratione beatae deserunt nemo, sunt similique molestias dolorem. Nulla est inventore pariatur assumenda. Sed magnam accusantium explicabo illum laborum nisi doloribus.
+                Dignissimos, provident laudantium ex, a delectus aliquam dolorum ad, eos id doloribus perferendis placeat nisi officiis sunt vero consequuntur voluptatibus laboriosam perspiciatis! Dolorum, eius ducimus nesciunt obcaecati voluptatum deleniti? Dolorem.
+                Dolore porro autem sed explicabo, facere aut praesentium laborum quaerat officiis ipsam quas repudiandae placeat suscipit rerum et sequi ullam blanditiis at provident nulla cum dolores beatae inventore. Corporis, ex!</p>
+            </div>
+           
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.python_container_01 a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetID = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetID);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+{% endblock %}

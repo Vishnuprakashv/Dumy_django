@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot Password</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 6px;
+            margin-top: 10px; 
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding-top: 10px; 
+        }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            text-align: left;
+        }
+        .input-group label {
+            font-weight: bold;
+        }
+        .input-group input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 22px); 
+        }
+        .input-group input:disabled {
+            background-color: #e9e9e9;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px; 
+            padding-top: 10px; 
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #ccc;
+        }
+        .link-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .link-group a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .link-group a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+        .error {
+            color: red;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .container {
+                max-width: 300px; 
+                padding: 8px; 
+            }
+            h1 {
+                font-size: 14px; 
+                margin-top: 6px; 
+            }
+            .button-group button {
+                padding: 6px 12px; 
+                font-size: 12px; 
+            }
+            .input-group input {
+                padding: 6px; 
+                font-size: 12px; 
+            }
+            .link-group {
+                margin-top: 12px; 
+            }
+            .link-group a {
+                font-size: 12px; 
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 800px; 
+                padding: 30px; 
+            }
+            h1 {
+                font-size: 32px; 
+                margin-top: 20px; 
+            }
+            .button-group button {
+                padding: 14px 28px; 
+                font-size: 18px; 
+            }
+            .input-group input {
+                padding: 14px; 
+                font-size: 18px; 
+            }
+            .link-group {
+                margin-top: 30px; 
+            }
+            .link-group a {
+                font-size: 18px; 
+            }
+        }
+    </style>
+    <script>
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function requestOtpAction() {
+            const userEmail = document.getElementById('user_email').value;
+            const csrftoken = getCookie('csrftoken');
+
+            fetch('{% url "dumy_app:forgot_pass" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({ action: 'request_otp_action', user_email: userEmail }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('otpSection').classList.remove('hidden');
+                    document.getElementById('otp').removeAttribute('disabled');
+                    alert('OTP sent successfully to your email.');
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send OTP. Please try again.');
+            });
+        }
+
+        function verifyOtpAction() {
+            const userEmail = document.getElementById('user_email').value;
+            const otpInput = document.getElementById('otp').value.trim();
+            const csrftoken = getCookie('csrftoken');
+
+            fetch('{% url "dumy_app:forgot_pass" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({ action: 'verify_otp_action', user_email: userEmail, otp: otpInput }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById('passwordSection').classList.remove('hidden');
+                    document.getElementById('new_password').removeAttribute('disabled');
+                    document.getElementById('confirm_password').removeAttribute('disabled');
+                    document.getElementById('reset_password_btn').classList.remove('hidden');
+                    alert('OTP verified successfully. Please enter your new password.');
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to verify OTP. Please try again.');
+            });
+        }
+
+        function resetPasswordAction() {
+            const userEmail = document.getElementById('user_email').value;
+            const otpInput = document.getElementById('otp').value.trim();
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            const csrftoken = getCookie('csrftoken');
+
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            fetch('{% url "dumy_app:forgot_pass" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({ action: 'reset_password_action', user_email: userEmail, otp: otpInput, user_password: newPassword, confirm_password: confirmPassword }),
+            })
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                } else {
+                    return response.json().then(data => {
+                        if (data.success) {
+                            alert('Password reset successfully. You can now log in.');
+                        } else {
+                            alert(data.message);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to reset password. Please try again.');
+            });
+        }
+
+        function resendOtpAction() {
+            requestOtpAction();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('request_otp_btn').addEventListener('click', event => {
+                event.preventDefault();
+                requestOtpAction();
+            });
+
+            document.getElementById('verify_otp_btn').addEventListener('click', event => {
+                event.preventDefault();
+                verifyOtpAction();
+            });
+
+            document.getElementById('resend_otp_btn').addEventListener('click', event => {
+                event.preventDefault();
+                resendOtpAction();
+            });
+
+            document.getElementById('reset_password_btn').addEventListener('click', event => {
+                event.preventDefault();
+                resetPasswordAction();
+            });
+
+            document.getElementById('otp').addEventListener('input', () => {
+                const otpInput = document.getElementById('otp').value.trim();
+                const verifyBtn = document.getElementById('verify_otp_btn');
+                
+                if (otpInput.length === 6) {
+                    verifyBtn.removeAttribute('disabled');
+                } else {
+                    verifyBtn.setAttribute('disabled', 'disabled');
+                }
+            });
+
+            document.getElementById('confirm_password').addEventListener('input', () => {
+                const newPassword = document.getElementById('new_password').value;
+                const confirmPass = document.getElementById('confirm_password').value;
+                const resetBtn = document.getElementById('reset_password_btn');
+                
+                if (newPassword === confirmPass) {
+                    resetBtn.removeAttribute('disabled');
+                } else {
+                    resetBtn.setAttribute('disabled', 'disabled');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Forgot Password</h1>
+        
+        <form method="post" action="{% url 'dumy_app:forgot_pass' %}" autocomplete="off">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="user_email">Email:</label>
+                <input type="email" name="user_email" id="user_email" required autocomplete="email">
+            </div>
+            <button type="button" id="request_otp_btn">Request OTP</button>
+
+            <div id="otpSection">
+                <div class="input-group">
+                    <label for="otp">Enter OTP:</label>
+                    <input type="text" name="otp" id="otp" pattern="\d{6}" title="Enter a 6-digit OTP" disabled required>
+                </div>
+                <div class="button-group">
+                    <button type="button" id="verify_otp_btn" disabled>Verify OTP</button>
+                    <button type="button" id="resend_otp_btn">Resend OTP</button>
+                </div>
+            </div>
+
+            <div id="passwordSection">
+                <div class="input-group">
+                    <label for="new_password">New Password:</label>
+                    <input type="password" name="user_password" id="new_password" disabled required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm_password">Confirm Password:</label>
+                    <input type="password" name="confirm_password" id="confirm_password" disabled required>
+                </div>
+                <div class="button-group">
+                    <button type="button" id="reset_password_btn" disabled>Reset Password</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="link-group">
+            <a href="{% url 'dumy_app:login' %}">Back to Sign In</a>
+            <a href="{% url 'dumy_app:email_user' %}">Sign Up</a>
+        </div>
+    </div>
+</body>
+</html>

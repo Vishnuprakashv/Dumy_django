@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Verification</title>
+    
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+        /* background-color: red; */
+    }
+    h1 {
+        margin-bottom: 6px;
+        margin-top: 10px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 10px;
+    }
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        text-align: left;
+    }
+    .input-group label {
+        font-weight: bold;
+    }
+    .input-group input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: calc(100% - 22px);
+    }
+    .input-group input:disabled {
+        background-color: #e9e9e9;
+    }
+    .button-group {
+        height: 3.5rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 10px;
+    }
+    button {
+        height: 3rem;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        background-color: #28a745;
+        color: #fff;
+        cursor: pointer;
+    }
+    button:disabled {
+        background-color: #ccc;
+    }
+    .link-group,
+    .back-back-main-page {
+        height: 3rem;
+        width: 8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+    }
+    .link-group {
+        border: 1px solid #000;
+    }
+    .back-back-main-page {
+        border: 1px solid #000;
+    }
+    .link-group a,
+    .back-back-main-page a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        color: #007bff;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .link-group a:hover,
+    .back-back-main-page a:hover {
+        text-decoration: underline;
+    }
+    .hidden {
+        display: none;
+    }
+    .error {
+        color: red;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            padding: 15px;
+        }
+        h1 {
+            font-size: 20px;
+        }
+        .button-group {
+            flex-direction: column;
+            gap: 10px;
+        }
+    }
+
+    @media (max-width: 320px) {
+        .container {
+            max-width: 300px;
+            padding: 8px;
+        }
+        h1 {
+            font-size: 14px;
+            margin-top: 6px;
+        }
+        .button-group button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        .input-group input {
+            padding: 6px;
+            font-size: 12px;
+        }
+        .link-group a {
+            font-size: 12px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 800px;
+            padding: 30px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-top: 20px;
+        }
+        .button-group button {
+            padding: 14px 28px;
+            font-size: 18px;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+       
+        <h1>Verify Email & Register</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="user_email">Email:</label>
+                <input type="email" id="user_email" name="user_email" >
+            </div>
+            <div class="button-group">
+                <button id="verify_email">Verify Email</button>
+            </div>
+            <div id="otpSection" >
+                <div class="input-group">
+                    <label for="otp">OTP:</label>
+                    <input type="text" id="otp" name="otp" >
+                </div>
+                <div class="button-group">
+                    <button id="verify_otp" disabled>Verify OTP</button>
+                    <div class="link-group">
+                        <a href="#" id="resend_otp">Resend OTP</a>
+                    </div>
+                </div>
+            </div>
+            <div class="input-group new-confirm-password-container">
+                <label for="user_password">Password:</label>
+                <input type="password" id="user_password" name="user_password"  >
+            </div>
+            <div class="input-group new-confirm-password-container">
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password"  >
+                <div id="passwordError" class="error"></div>
+            </div>
+            <div class="button-group">
+                <button type="submit" id="submit_btn" >Register</button>
+                <div class="back-back-main-page">
+                    <a href="{% url 'dumy_app:main_page' %}">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

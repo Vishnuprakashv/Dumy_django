@@ -1,0 +1,9 @@
+
+.users_box{
+    height: 110vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: red;
+    gap: 1rem;
+}

@@ -1,0 +1,649 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.main-page-container {
+    height: 7rem;
+    width: 100%;
+    color: #fff;
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.main-anchor{
+    height: 3rem;
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+#main-link{
+    height: 2rem;
+    width: 7rem;
+    border-radius: 1rem;
+    border: 1px solid #000;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    background-color: #0f4a8a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-main-page-container {
+    height: 6rem;
+    width: 50rem;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.logo-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    width: 16rem;
+}
+
+#logo-circle-png{
+    height: 4rem;
+    width: 100%;
+    overflow: hidden;
+
+}
+
+.sign-login-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.email-container, .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-container a, .login-container a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.email-container, .login-container {
+    height: 2.5rem;
+    width: 7rem;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    background-color: #000;
+}
+/* Section Main */
+.section-main-container{
+    height: 600vh;
+    width: 100%;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    background-color: #e0f5fd;
+    gap: 0.5rem;
+}
+/* Section 01 */
+.section-01-container{
+    height: 95vh;
+    width: 90%;
+    padding: 1rem;
+    display: flex;
+    gap: 5rem;
+    background-color: #f9f9f9;
+}
+/* Section 01 Part 01 */
+.section-01-part-01-container{
+    height: 97%;
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+.logo-icon-container {
+    height: 15rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+#logo-circle-img{
+    height: 90%;
+    width: 40%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #159ee2;
+}
+.part-01-paragraph-container{
+    height: 10rem;
+    width: 100%;
+    padding-left: 2rem;
+    /* background-color: #159ee2; */
+}
+.part-01-link-container{
+    height: 7rem;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5rem;
+}
+.link-01-container{
+    height: 4rem;
+    width: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#part-01-link-01{
+    height: 3rem;
+    width: 11rem;
+    border-radius: 1rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 1px solid #000;
+    background-color: #0f4a8a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.link-02-container{
+    height: 3rem;
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+
+}
+#part-01-link-02{
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+/* Section 01 Part 02 */
+.section-01-part-02-container{
+    
+    height: 100%;
+    width: 48%;
+}
+#first_image{
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+}
+img {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+/* Section 02 */
+.section-02-container{
+    height: 55vh;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #0f4a8a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+/* Section 02 part 01 */
+.section-02-part-01-container{
+    height: 8vh;
+    width: 100%;
+    padding-left: 1.5rem;
+    /* background-color: aqua; */
+    color: #fff;
+}
+/* Section 02 part 02 */
+.section-02-part-02-container{
+    height: 37vh;
+    width: 100%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.section-02-part-02-anchor-container{
+    height: 90%;
+    width: 16%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+    /* background-color: aquamarine; */
+}
+.section-02-part-02-anchor-container:hover{
+    background-color: red;
+    border-radius: 0.5rem;
+
+}
+.section-02-image-box{
+    height: 70%;
+    width: 70%;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+#section-02-image{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.section-02-link-box{
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid #159ee2; */
+}
+#section-02-link{
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fff;
+}
+/* Section 03 Box */
+.section-03-box{
+    height: 160vh;
+    width: 100%;
+    background-color: #159ee2;
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.section-03-container{
+    height: 80%;
+    width: 70%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.section-03-part-container{
+    height: 24%;
+    width: 100%;
+    /* background-color: aqua; */
+    color: #fff;
+    display: flex;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    
+}
+.part-03-image{
+    width: 40%;
+    height: 90%;
+    border-radius: 0.5rem;
+}
+#section-03-image{
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+/* Section 04 Box CSS */
+.section-04-box{
+    height: 210vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 0.5rem;
+    /* background-color: red; */
+}
+.section-04-paragraph{
+    padding-top: 0.5rem;
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-left: 6rem;
+    color: #000;
+    /* background-color: aqua; */
+}
+.section-04-container-01{
+    height: 95vh;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* background-color: aqua; */
+}
+.section-04-container-02{
+    height: 95vh;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    /* background-color: #000; */
+}
+.section-04-part-00{
+    height: 100%;
+    width: 45%;
+    border-radius: 1rem;
+    border: 1px solid #000;
+    /* background-color: red; */
+    background-image: url("../icons/background_image_01.jpeg");
+    /* overflow: hidden; */
+    background-size: cover; /* Adjusts the background image to cover the entire element */
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
+  background-position: center; /* Centers the background image */
+  background-attachment: fixed; 
+}
+.section-04-link-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#section-04-link-anchor{
+    height: 3rem;
+    width: 12rem;
+    border: 1px solid #159ee2;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 1rem;
+    background-color: #000;
+}
+/* Section 05 Box */
+.section-05-box{
+    height: 55vh;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: red; */
+}
+.section-05-paragraph{
+    height: 9vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 4rem;
+    /* background-color: aqua; */
+}
+.section-05-container{
+    height: 45vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* background-color: #000; */
+}
+.section-05-part-01{
+    height: 100%;
+    width: 20%;
+    border-radius: 50%;
+   
+}
+.section-05-part-02{
+    height: 100%;
+    width: 20%;
+    border-radius: 50%;
+   
+}
+.section-05-part-03{
+    height: 100%;
+    width: 20%;
+    border-radius: 50%;
+   
+}
+.section-05-part-04{
+    height: 100%;
+    width: 20%;
+    border-radius: 50%;
+   
+}
+.section-05-anchor{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#section-05-link{
+    height: 3rem;
+    width: 8rem;
+    border-radius: 1rem;
+    border: 1px solid #159ee2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    color: #fff;
+    background-color: #0f4a8a;
+}
+/* Footer CSS */
+.footer{
+    height: 65vh;
+    width: 100%;
+    color: #fff;
+    background-color: #4db5ff;
+    border-radius: 2rem 2rem 0 0;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+.footer_box{
+    height: 87%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 58.3rem;
+    color: #000;
+    /* background-color: red; */
+}
+.footer_logo_box{
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.footer_all_content_box{
+    height: 100%;
+    width: 16%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    gap: 1rem;
+
+}
+.footer-anchor-01{
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+#footer-link-01{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+    background-color: #ccc;
+    color: #000;
+    text-decoration: none;
+}
+#footer-link-img-01{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+.footer-anchor-02{
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+#footer-link-02{
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+    background-color: #ccc;
+    color: #000;
+    text-decoration: none;
+}
+#footer-link-img-02{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+.footer_social_media{
+    text-align: center;
+    height: 100%;
+    width: 16%;
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    gap: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.footer_logo_box>a{
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    color: #1f1f38;
+}
+.footer_all_content_box>a{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    color: #1f1f38;
+    align-items: center;
+}
+.footer_social_media>a{
+    font-size: 2rem;
+    font-weight: 600;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    color: #1f1f38;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .main-page-container {
+        gap: 1rem;
+    }
+    .email-container a, .login-container a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-page-container {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+        gap: 1rem;
+    }
+    .email-container a, .login-container a {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-page-container {
+        gap: 0.5rem;
+    }
+    .email-container a, .login-container a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .email-container a, .login-container a {
+        font-size: 0.8rem;
+    }
+}

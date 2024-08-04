@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puran Project</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myfilecss/main_page_3.css' %}">
+</head>
+<body>
+    <!-- Section Header -->
+    <div class="main-page-container">
+        <div class="logo-main-page-container">
+           
+            <div class="logo-img-container">
+                <img id="logo-circle-png" src="{% static 'icons/Puran_img_01.png' %}" alt="">
+            </div>
+            <div class="main-anchor">
+                <a id="main-link" href="">About</a>
+            </div>
+            <div class="main-anchor">
+                <a id="main-link" href="">Updated</a>
+            </div>
+            <div class="main-anchor">
+                <a id="main-link" href="">Contact</a>
+            </div>
+        </div>
+        <div class="sign-login-container">
+            <div class="email-container">
+                <a href="{% url 'dumy_app:email_user' %}">Signup</a>
+            </div>
+            <h1>|</h1>
+            <div class="login-container">
+                <a href="{% url 'dumy_app:login' %}">Login</a>
+            </div>
+        </div>
+    </div>
+    <!-- Section main -->
+    <div class="section-main-container">
+        <!-- Section 01 -->
+         <div class="section-01-container">
+            <div class="section-01-part-01-container">
+                <div class="logo-icon-container">
+                    <img id="logo-circle-img" src="{% static 'icons/Puran_img_icon.jpg' %}" alt="">
+                    <div class="sign-login-container">
+                        <h1>Our Services!</h1>
+                    </div>
+                </div>
+                <div class="part-01-paragraph-container">
+                    <p>Lorem ipsum dolor sit amet consectetur
+                         adipisicing elit. Vero, fugiat voluptas! Beatae sed 
+                         explicabo sequi nesciunt deserunt libero quidem at, ipsum quis.
+                          Libero perferendis fuga omnis pariatur facere.
+                           Expedita veniam laudantium   
+                        Lorem ipsum dolor sit amet consectetur 
+                        adipisicing elit. Eius in aliquam quis quaerat exercitationem 
+                        ducimus tempore iusto, reiciendis maxime maiores sequi consequuntur 
+                        aspernatur praesentium neque 
+                        nam hic, illo quibusdam! Voluptates.
+                    </p>
+                </div>
+                <div class="part-01-link-container">
+                    <div class="link-01-container">
+                        <a id="part-01-link-01" href="{% url 'dumy_app:email_user' %}">Visit for more!</a>
+                    </div>
+                    
+                </div>
+            </div>
+        
+            <div class="section-01-part-02-container">
+                <img id="first_image"  src="{% static 'icons/First_image.jpg' %}" alt="">
+
+            </div>   
+         </div>
+         <!-- Section 02 -->
+        <div class="section-02-container">
+            <div class="section-02-part-01-container">
+                <h1 id="section-02-h1">Learn Technical with Example</h1>
+            </div>
+            <div class="section-02-part-02-container">
+                <div class="section-02-part-02-anchor-container">
+                    <div class="section-02-image-box"><img id="section-02-image" src="{% static 'icons/Puran_img_icon.jpg' %}" alt=""></div>
+                    <div class="section-02-link-box"><a id="section-02-link" href="">Java</a></div>
+                </div>
+                <div class="section-02-part-02-anchor-container">
+                    <div class="section-02-image-box"><img id="section-02-image" src="{% static 'icons/Puran_img_icon.jpg' %}" alt=""></div>
+                    <div class="section-02-link-box"><a id="section-02-link" href="">Python</a></div>
+                </div>
+                <div class="section-02-part-02-anchor-container">
+                    <div class="section-02-image-box"><img id="section-02-image" src="{% static 'icons/Puran_img_icon.jpg' %}" alt=""></div>
+                    <div class="section-02-link-box"><a id="section-02-link" href="">Data Analysis</a></div>
+                </div>
+                <div class="section-02-part-02-anchor-container">
+                    <div class="section-02-image-box"><img id="section-02-image" src="{% static 'icons/Puran_img_icon.jpg' %}" alt=""></div>
+                    <div class="section-02-link-box"><a id="section-02-link" href="">Data Science</a></div>
+                </div>
+            </div>
+        </div>
+        <!-- Section 03 Objective test -->
+         <div class="section-03-box">
+            <div><h1>Test series</h1></div>
+            <div class="section-03-container">
+                <div class="section-03-part-container">
+                    <div class="part-03-image"><img id="section-03-image" src="{% static 'icons/Java_test_image.jpg' %}" alt=""></div>
+                    <div class="part-03-paragraph">
+                        <h1>Java</h1>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. Laboriosam vitae eligendi, 
+                        error numquam earum nobis illum laborum praesentium enim
+                         repudiandae delectus inventore, sint maiores esse? Sit iure
+                          fuga aliquid atque. 
+                        </p>
+                        <a href="">Start Now</a>
+                    </div>
+                </div>
+                <div class="section-03-part-container">
+                    <div class="part-03-paragraph">
+                        <h1>Python</h1>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. Laboriosam vitae eligendi, 
+                        error numquam earum nobis illum laborum praesentium enim
+                         repudiandae delectus inventore, sint maiores esse? Sit iure
+                          fuga aliquid atque. 
+                        </p>
+                        <a href="">Start Now</a>
+                    </div>
+                    <div class="part-03-image"><img id="section-03-image" src="{% static 'icons/Python_test_image.jpg' %}" alt=""></div>
+                    
+                </div>
+                <div class="section-03-part-container">
+                    <div class="part-03-image"><img id="section-03-image" src="{% static 'icons/Data_analytics_test_image.jpg' %}" alt=""></div>
+                    <div class="part-03-paragraph">
+                        <h1>Data Analytics</h1>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. Laboriosam vitae eligendi, 
+                        error numquam earum nobis illum laborum praesentium enim
+                         repudiandae delectus inventore, sint maiores esse? Sit iure
+                          fuga aliquid atque.
+                        </p>
+                        <a href="">Start Now</a>
+                    </div>
+                </div>
+                <div class="section-03-part-container">
+                    <div class="part-03-paragraph">
+                        <h1>Data Science</h1>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. Laboriosam vitae eligendi, 
+                        error numquam earum nobis illum laborum praesentium enim
+                         repudiandae delectus inventore, sint maiores esse? Sit iure
+                          fuga aliquid atque. 
+                        </p>
+                        <a href="">Start Now</a>
+                    </div>
+                    <div class="part-03-image"><img id="section-03-image" src="{% static 'icons/Data_science_test_image.jpg' %}" alt=""></div>
+                   
+                </div>
+            </div>
+         </div>
+         <!-- Section 04 -->
+        <div class="section-04-box">
+            <div class="section-04-paragraph"><h1>Explore More!</h1></div>
+            <div class="section-04-container-01">
+                <div class="section-04-part-00">
+                    <div class="section-04-link-container">
+                        <a id="section-04-link-anchor" href="">Java Explore!</a>
+                    </div>
+                </div>
+                <div class="section-04-part-00">
+                    <div class="section-04-link-container">
+                        <a id="section-04-link-anchor" href="">Python Explore!</a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-04-container-02">
+                <div class="section-04-part-00">
+                    <div class="section-04-link-container">
+                        <a id="section-04-link-anchor" href="">Analytics Explore!</a>
+                    </div>
+                </div>
+                <div class="section-04-part-00">
+                    <div class="section-04-link-container">
+                        <a id="section-04-link-anchor" href="">Science Explore!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section 05  -->
+         <div class="section-05-box">
+            <div class="section-05-paragraph"><h1>Purches courses!</h1></div>
+            <div class="section-05-container">
+                <div class="section-05-part-01">
+                    <div class="section-05-anchor">
+                        <a id="section-05-link" href="">Java</a>
+                    </div>
+                </div>
+                <div class="section-05-part-02">
+                    <div class="section-05-anchor">
+                        <a id="section-05-link" href="">Python</a>
+                    </div>
+                </div>
+                <div class="section-05-part-03">
+                    <div class="section-05-anchor">
+                        <a id="section-05-link" href="">Analytics</a>
+                    </div>
+                </div>
+                <div class="section-05-part-04">
+                    <div class="section-05-anchor">
+                        <a id="section-05-link" href="">Science</a>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!-- Section 06 Box -->
+          <div></div>
+
+    </div>
+    <!-- Section Footer -->
+    <section class="footer">
+        <div class="footer_logo_box">
+            <a href="" class="footer_logo">EGATOR</a>
+        </div>
+        <div class="footer_box">
+          <div class="footer_all_content_box">
+            <div><h1>Vision!</h1></div>
+            <div class="footer-anchor-01"><a id="footer-link-01" href=""><img id="footer-link-img-01" src="{% static 'foot/logo_01.jpg' %}" alt=""><h3>Home</h3></a></div>
+            <div class="footer-anchor-01"><a id="footer-link-01" href=""><img id="footer-link-img-01" src="" alt=""><h3>About</h3></a></div>
+            <div class="footer-anchor-01"><a id="footer-link-01" href=""><img id="footer-link-img-01" src="" alt=""><h3>Explore more!</h3></a></div>
+            <div class="footer-anchor-01"><a id="footer-link-01" href=""><img id="footer-link-img-01" src="{% static 'foot/logo_02.jpg' %}" alt=""><h3>Contact us!</h3></a></div>
+          </div>
+          
+          <div class="footer_social_media">
+            <div><h1>Connect us!</h1></div>
+            <div class="footer-anchor-02">
+                <a id="footer-link-02" href="https://www.instagram.com/accounts/login/">
+                    <img id="footer-link-img-02" src="{% static 'foot/logo_002.jpg' %}" alt="">
+                    <h3>Instagram</h3>
+                </a>
+            </div>
+            <div class="footer-anchor-02">
+                <a id="footer-link-02" href="https://www.facebook.com/">
+                    <img id="footer-link-img-02" src="{% static 'foot/logo_001.jpg' %}" alt="">
+                    <h3>Facebook</h3>
+                </a>
+                </div>
+            <div class="footer-anchor-02">
+                <a id="footer-link-02" href="https://telegram.org/">
+                    <img id="footer-link-img-02" src="{% static 'foot/logo_003.jpg' %}" alt="">
+                    <h3>Twitter</h3>
+                </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div>
+        {% block content %}
+        <!-- Main content will be inserted here -->
+        {% endblock %}
+      </div>
+</body>
+</html>

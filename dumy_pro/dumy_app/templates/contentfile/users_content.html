@@ -1,0 +1,22 @@
+{% extends "myfile/user_page.html" %}
+
+{% block title %}Users Content{% endblock %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'contentcss/users_04.css' %}">
+{% endblock %}
+{% block content %}
+    <h1>Welcome to Users Content!</h1>
+    <p>This is the Users content page.</p>
+    <div class="users_box" style="height: 60vh; width: 100%; display: flex; flex-direction: row; background-color: red; gap: 1rem;">
+        <div>
+            <a href="#">hello</a>
+            <a href="#">how</a>
+            <a href="#">help</a>
+        </div>
+        <div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam ipsa ratione incidunt fuga, facere, nobis sequi aliquam in neque est nesciunt excepturi tempore! Voluptatum sit veritatis officiis maiores vel quam.
+            Doloremque, reiciendis tenetur labore quis praesentium consequuntur minima dignissimos, consectetur, iure error cupiditate sed. Dignissimos quia labore nostrum officiis assumenda maxime nihil ex suscipit molestiae incidunt, laboriosam error repudiandae cumque.</p>
+        </div>
+    </div>
+{% endblock %}

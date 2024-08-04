@@ -1,0 +1,206 @@
+{% extends "myfile/user_page.html" %}
+
+{% block title %}Python Content{% endblock %}
+
+{% block content %}
+<div class="python_container" style="position: fixed; top: 9rem; left: 0; width: 100%; height: calc(100vh - 9rem); display: flex; flex-direction: row; gap: 1rem; padding-left: 0.5rem; padding-right: 0.5rem; background-color: aqua;">
+    <!-- Part 01 -->
+    <div class="python_container_01" style="height: 100%; width: 22%; background-color: red; overflow-y: auto;">
+        <h1>Python Content!</h1>
+        <ul>
+            <li>
+                <a href="#introduction">Introduction</a>
+            </li>
+            <li>
+                <a href="#data_types">Data types</a>
+            </li>
+            <li>
+                <a href="#practice">Practice</a>
+            </li>
+        </ul>
+    </div>
+    <!-- Part 02 -->
+    <div class="python_container_02" style="height: 100%; width: 76%; background-color: blueviolet; display: flex; flex-direction: column; gap: 8rem; color: #fff; overflow-y: auto;">
+        <div id="introduction" style="min-height: 70vh; width: 100%; background-color: black; color: #fff;">
+            <h1>Introduction</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias ab dolorum. Quo corrupti incidunt ullam ad, ea odit expedita, eaque consequatur odio perspiciatis magni repellat adipisci minus voluptates. Ea.
+            Exercitationem at cupiditate possimus commodi placeat numquam totam recusandae ratione beatae deserunt nemo, sunt similique molestias dolorem. Nulla est inventore pariatur assumenda. Sed magnam accusantium explicabo illum laborum nisi doloribus.
+            Dignissimos, provident laudantium ex, a delectus aliquam dolorum ad, eos id doloribus perferendis placeat nisi officiis sunt vero consequuntur voluptatibus laboriosam perspiciatis! Dolorum, eius ducimus nesciunt obcaecati voluptatum deleniti? Dolorem.
+            Dolore porro autem sed explicabo, facere aut praesentium laborum quaerat officiis ipsam quas repudiandae placeat suscipit rerum et sequi ullam blanditiis at provident nulla cum dolores beatae inventore. Corporis, ex!</p>
+        </div>
+        <div id="data_types" style="min-height: 70vh; width: 100%; background-color: blue; color: #fff;">
+            <h1>Data types</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quidem enim cumque temporibus quibusdam inventore neque numquam iure ullam quam sequi quae quas aut adipisci accusamus illum dignissimos, corporis tempore dolorem!
+            Minus deleniti mollitia sint eius doloribus, tempora repellat sapiente quo aperiam unde, perferendis nostrum accusamus veritatis ratione aliquam ipsa? At ut ducimus rerum inventore aut. Explicabo quasi distinctio laudantium placeat!
+            Quis nam, ipsum, facilis perferendis veritatis labore sint veniam harum cumque, fugiat molestiae iusto incidunt! Reiciendis facilis facere eaque repudiandae odio, possimus voluptatum rem laudantium quis laborum. Esse, culpa dolores?
+            Eos et distinctio animi eum, maiores quos sunt esse ullam, maxime facere quia nostrum saepe recusandae a optio, doloribus accusamus voluptas! Perferendis necessitatibus quod rerum, culpa non ducimus officiis aperiam.</p>
+        </div>
+        <div id="practice" style="min-height: 70vh; width: 100%; background-color: green; color: #fff;">
+            <h1>Practice</h1>
+            <p>Click the button below to open the Python code runner.</p>
+            <button id="openPopupBtn">Open Code Runner</button>
+        </div>
+    </div>
+</div>
+
+<div id="popup" class="popup">
+    <div class="popup-header">
+        <button id="runCodeBtn" class="nav-button">Run</button>
+        <div class="output-cut-button-box">
+            <button>Output</button>
+            <button id="closePopupBtn" class="nav-button">&times;</button>
+        </div>
+    </div>
+    <div class="popup-content">
+        <div id="lineNumbers"></div>
+        <textarea id="codeInput" placeholder="Write your Python code here..."></textarea>
+        <pre id="output"></pre>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.python_container_01 a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetID = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetID);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    document.getElementById('openPopupBtn').addEventListener('click', () => {
+        document.getElementById('popup').style.display = 'block';
+    });
+
+    document.getElementById('closePopupBtn').addEventListener('click', () => {
+        document.getElementById('popup').style.display = 'none';
+    });
+
+    document.getElementById('runCodeBtn').addEventListener('click', async () => {
+        const code = document.getElementById('codeInput').value;
+        const response = await fetch('/run_code/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: new URLSearchParams({ code })
+        });
+        const result = await response.json();
+        document.getElementById('output').textContent = result.output;
+    });
+
+    function updateLineNumbers() {
+        const textarea = document.getElementById('codeInput');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const lines = textarea.value.split('\n').length;
+        let lineNumbersText = '';
+        for (let i = 1; i <= lines; i++) {
+            lineNumbersText += i + '\n';
+        }
+        lineNumbers.textContent = lineNumbersText;
+    }
+
+    document.getElementById('codeInput').addEventListener('input', updateLineNumbers);
+    document.getElementById('codeInput').addEventListener('scroll', function() {
+        document.getElementById('lineNumbers').scrollTop = this.scrollTop;
+    });
+
+    // Initial call to set line numbers
+    updateLineNumbers();
+</script>
+
+<style>
+    #popup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #000;
+        z-index: 1000;
+        width: 80%;
+        height: 70vh;
+        overflow: hidden;
+        gap: 0.2rem;
+    }
+    .popup-header {
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #333;
+        padding: 2px;
+        padding-left: 20rem;
+        gap: 26rem;
+    }
+    .nav-button {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        font-size: 14px;
+        cursor: pointer;
+        margin-left: 1rem;
+        height: 18px;
+        line-height: 18px;
+    }
+    #runCodeBtn {
+        background-color: green;
+        color: #fff;
+        width: 6rem;
+        height: 18px;
+    }
+    .output-cut-button-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6rem;
+    }
+    .popup-content {
+        display: flex;
+        height: calc(100% - 24px); /* Adjust height to fit below header */
+    }
+    #lineNumbers {
+        width: 40px; /* Adjust width as needed */
+        background-color: #000;
+        color: #fff;
+        text-align: right;
+        padding-right: 10px;
+        box-sizing: border-box;
+        line-height: 1.5; /* Ensure line-height matches */
+        font-size: 14px; /* Set font size here */
+        white-space: pre;
+        overflow-y: hidden; /* Hide vertical scrollbar */
+    }
+    #codeInput {
+        flex: 1;
+        height: 100%;
+        /* width: 80%; */
+        border: 1px solid #fff;
+        padding-left: 10px;
+        box-sizing: border-box;
+        background-color: #000;
+        color: #fff;
+        border: none;
+        font-family: monospace;
+        font-size: 14px; /* Set font size here to match line numbers */
+        overflow-y: auto;
+        white-space: pre;
+        line-height: 1.5; /* Ensure line-height matches */
+    }
+    #output {
+        /* margin-top: 10px; */
+        height: 100%;
+        /* overflow-y: auto; */
+        width: 30%;
+        /* border: 1px solid #fff; */
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+{% endblock %}

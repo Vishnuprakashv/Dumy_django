@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image & Update Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+        }
+
+        .form-content {
+            width: 100%;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            padding-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        img, .static-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .static-image {
+            background-color: #ccc;
+        }
+
+        .edit-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .image-container:hover .edit-icon {
+            display: block;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex: 1;
+        }
+
+        .form-group .edit-icon-inline {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        input[type="password"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:disabled {
+            background: #cccccc;
+        }
+
+        button:not(:disabled):hover {
+            background: #0056b3;
+        }
+
+        .remove-button {
+            background: #FF6347;
+        }
+
+        .remove-button:not(:disabled):hover {
+            background: #cc5238;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .model-form-data-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-pop-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            form {
+                flex-direction: column;
+                padding: 15px;
+                width: 100%;
+                align-items: center;
+            }
+
+            .image-container {
+                margin: 0 auto 0.2rem auto;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 10px;
+            }
+
+            input[type="text"], input[type="file"], button {
+                padding: 8px;
+            }
+
+            .form-group {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .form-group label {
+                margin-bottom: 5px;
+            }
+
+            .form-group .edit-icon-inline {
+                margin-left: 0;
+            }
+
+            .modal-content {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <!-- Your form and modal HTML -->
+    <form method="post" action="{% url 'dumy_app:user_image' %}" enctype="multipart/form-data" autocomplete="off">
+        {% csrf_token %}
+        <div class="image-container">
+            {% if user_image_data and user_image_data.image %}
+                <img src="{{ user_image_data.image.url }}" alt="User Image">
+            {% else %}
+                <div class="static-image"></div>
+            {% endif %}
+            <i class="edit-icon" onclick="openModal('imageModal')">✏️</i>
+        </div>
+        <div class="form-content">
+            <div>
+                <button type="submit" name="remove_image" class="remove-button">Remove Image</button>
+            </div>
+            <div>
+                <button type="submit">Save</button>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="user_name">Name: {{ user_data.first_name }} {{ user_data.last_name }}</label>
+                <i class="edit-icon-inline" onclick="openModal('nameModal')">✏️</i>
+            </div>
+            <div class="form-group">
+                <label for="user_age">Age: {{ user_data.age }}</label>
+                <i class="edit-icon-inline" onclick="openModal('ageModal')">✏️</i>
+            </div>
+            <div class="form-group">
+                <label for="user_contact">Contact: {{ user_data.contact }}</label>
+                <i class="edit-icon-inline" onclick="openModal('contactModal')">✏️</i>
+            </div>
+            
+            <hr>
+            <div>
+                <a href="{% url 'dumy_app:update_password' %}">Update Password</a>
+            </div>
+            <div>
+                <a href="{% url 'dumy_app:user_page' %}">Home</a>
+            </div>
+           
+        </div>
+    </form>
+
+    <!-- Image Modal -->
+     <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-pop-header">
+                <div><h2>Update Image</h2></div>
+                <div><span class="close" onclick="closeModal('imageModal')">&times;</span></div>
+            </div>
+            <form method="post" action="{% url 'dumy_app:user_image' %}" enctype="multipart/form-data" autocomplete="off">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <div class="model-form-data-container">
+                    <div>
+                        <label for="user_image">Upload Image:</label>
+                        <input type="file" name="user_image" accept="image/*">
+                    </div>
+                    <div>
+                        <button type="submit" name="update_image">Update Image</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Name Modal -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-pop-header">
+                <div><h2>Edit Name</h2></div>
+                <div><span class="close" onclick="closeModal('nameModal')">&times;</span></div>
+            </div>
+            <form method="post" action="{% url 'dumy_app:user_image' %}" class="ajax-form">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <div class="model-form-data-container">
+                    <div>
+                        <label for="first_name">First Name:</label>
+                        <input type="text" name="first_name" value="{{ user_data.first_name }}" required>
+                    </div>
+                    <div>
+                        <label for="last_name">Last Name:</label>
+                        <input type="text" name="last_name" value="{{ user_data.last_name }}" required>
+                    </div>
+                    <div>
+                        <button type="submit" name="update_name">Update Name</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Age Modal -->
+    <div id="ageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-pop-header">
+                <div><h2>Edit Age</h2></div>
+                <div><span class="close" onclick="closeModal('ageModal')">&times;</span></div> 
+            </div>
+            <form method="post" action="{% url 'dumy_app:user_image' %}" class="ajax-form">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <div class="model-form-data-container">
+                    <div>
+                        <label for="user_age">Age:</label>
+                        <input type="text" name="user_age" value="{{ user_data.age }}" required>
+                    </div>
+                    <div>
+                        <button type="submit" name="update_age">Update Age</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-pop-header">     
+                <div><h2>Edit Contact</h2></div>
+                <div><span class="close" onclick="closeModal('contactModal')">&times;</span></div>
+            </div> 
+            <form method="post" action="{% url 'dumy_app:user_image' %}" class="ajax-form">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ user.id }}">
+                <div class="model-form-data-container">
+                    <div>
+                        <label for="user_contact">Contact:</label>
+                        <input type="text" name="user_contact" value="{{ user_data.contact }}" required>
+                    </div>
+                    <div>
+                        <button type="submit" name="update_contact">Update Contact</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
