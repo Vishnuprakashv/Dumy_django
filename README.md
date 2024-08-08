@@ -1,8 +1,8 @@
 Instruction for Windows:
 
-first cerate a folder like Dummy
+First create a folder like Dummy
 
-Go to inside: Dummy
+Go to inside folder: Dummy
 
 Open Command prompot create virtual environment: python -m venv Your_virtual_environment_name(like myvenv)
 
